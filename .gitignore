@@ -1,0 +1,7 @@
+.env
+be/.env
+be/.venv/
+node_modules/
+dist/
+.agents/skills/
+be/data/vilipbta/*.jsonl

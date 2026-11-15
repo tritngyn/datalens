@@ -1,0 +1,120 @@
+[
+  {
+    "review_id": "d40d22dd6eec8a70",
+    "relevance": "relevant",
+    "mentions": [
+      {
+        "target_brand": "DHC",
+        "aspect": "Price",
+        "sentiment": "Negative",
+        "evidence": "em tính mua dhc mà túi tiền ko cho"
+      },
+      {
+        "target_brand": "Vaseline",
+        "aspect": "GeneralExperience",
+        "sentiment": "Neutral",
+        "evidence": "em chọn vaseline mua trong lam thảo cx ổn"
+      },
+      {
+        "target_brand": "Vaseline",
+        "aspect": "Benefits",
+        "sentiment": "Positive",
+        "evidence": "em sài thấy giảm thâm"
+      },
+      {
+        "target_brand": "Vaseline",
+        "aspect": "Scent",
+        "sentiment": "Positive",
+        "evidence": "mà nó thơm cực màu xanh lá á chị thơm lắm"
+      }
+    ]
+  },
+  {
+    "review_id": "aa44a2275cb8dc38",
+    "relevance": "relevant",
+    "mentions": [
+      {
+        "target_brand": "DHC",
+        "aspect": "Benefits",
+        "sentiment": "Negative",
+        "evidence": "dhc ko làm hồng môi nhé chứ dưỡng ẩm thôi"
+      },
+      {
+        "target_brand": "DHC",
+        "aspect": "Price",
+        "sentiment": "Negative",
+        "evidence": "với giá đó thì tui nghỉ mua vaseline ngon hơn"
+      },
+      {
+        "target_brand": "Vaseline",
+        "aspect": "GeneralExperience",
+        "sentiment": "Positive",
+        "evidence": "mua vaseline ngon hơn"
+      }
+    ]
+  },
+  {
+    "review_id": "eed32ae5961417b5",
+    "relevance": "relevant",
+    "mentions": [
+      {
+        "target_brand": "Vaseline",
+        "aspect": "GeneralExperience",
+        "sentiment": "Negative",
+        "evidence": "Vaselline là cái chất lượng thấp mà nổi pr lố"
+      },
+      {
+        "target_brand": "Vaseline",
+        "aspect": "Benefits",
+        "sentiment": "Negative",
+        "evidence": "chưa thấy loại nào cấp ẩm kém như vsl, xài vsl môi vẫn bong tróc chảy máu"
+      },
+      {
+        "target_brand": "DHC",
+        "aspect": "Benefits",
+        "sentiment": "Positive",
+        "evidence": "Xài dhc lucas với mấy loại kia thì đỡ hẳn"
+      },
+      {
+        "target_brand": "other",
+        "aspect": "Benefits",
+        "sentiment": "Positive",
+        "evidence": "Xài dhc lucas với mấy loại kia thì đỡ hẳn"
+      }
+    ]
+  },
+  {
+    "review_id": "f57dab9f5241882c",
+    "relevance": "relevant",
+    "mentions": [
+      {
+        "target_brand": "Vaseline",
+        "aspect": "Color",
+        "sentiment": "Neutral",
+        "evidence": "cây vaselin có màu xanh ak"
+      },
+      {
+        "target_brand": "Vaseline",
+        "aspect": "Benefits",
+        "sentiment": "Negative",
+        "evidence": "dưỡng ẩm ko tốt đâu nha"
+      },
+      {
+        "target_brand": "Vaseline",
+        "aspect": "Price",
+        "sentiment": "Negative",
+        "evidence": "mua nhưng ko đáng tiền chút nào"
+      }
+    ]
+  },
+  {
+    "review_id": "8ad56a861616dd4a",
+    "relevance": "off_topic",
+    "mentions": []
+  },
+  {
+    "review_id": "55e0c158b4a6206c",
+    "relevance": "off_topic",
+    "mentions": []
+  }
+]
