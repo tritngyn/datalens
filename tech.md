@@ -1,6 +1,6 @@
 # Review Intelligence — MVP Technical Design
 
-Thiết kế triển khai [features_and_scope.md](features_and_scope.md). `fe/` hiện là frontend Vite mẫu; chưa có backend hoặc chức năng sản phẩm. Không có timeline; các giới hạn kích thước/batch là cấu hình khởi đầu cần đo.
+Thiết kế triển khai [features_and_scope.md](features_and_scope.md). `fe/` hiện là frontend Vite mẫu; backend P1 đã có CSV preview/import/đọc review trên PostgreSQL, chưa có phân tích AI/chat/chart/worker. Không có timeline; các giới hạn kích thước/batch là cấu hình khởi đầu cần đo.
 
 ## Thứ tự task cho PI Code
 

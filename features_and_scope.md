@@ -1,6 +1,6 @@
 # Review Intelligence — MVP Features and Scope
 
-Trạng thái: đã có frontend Vite mẫu trong `fe/`, chưa có chức năng sản phẩm hoặc backend. Thiết kế ở [tech.md](tech.md). Không đặt timeline.
+Trạng thái: đã có frontend Vite mẫu trong `fe/` và backend P1 (CSV preview/import/đọc review, PostgreSQL); chưa có phân tích AI, chat, chart hoặc worker. Thiết kế ở [tech.md](tech.md). Không đặt timeline.
 
 ## 1. Mục tiêu MVP
 

@@ -1,13 +1,23 @@
 # PI Agent — review P0 và kế hoạch triển khai
 
-Trạng thái: **P0 cần sửa trước P1**. Đây là kế hoạch và tiêu chí bàn giao; chưa phải lệnh bắt đầu viết code. Phạm vi sản phẩm theo [features_and_scope.md](features_and_scope.md), quyết định kỹ thuật theo [tech.md](tech.md).
+Trạng thái: **P1 đã triển khai backend FastAPI + PostgreSQL + Alembic và test trên PostgreSQL thật; đang chờ review.** P0R đã sửa fixture và checker PASS; smoke call LLM vẫn chưa kiểm chứng vì thiếu `LLM_API_KEY`, nhưng P1 không gọi model nên không bị chặn. P2 vẫn cần endpoint model hoạt động. Phạm vi sản phẩm theo [features_and_scope.md](features_and_scope.md), quyết định kỹ thuật theo [tech.md](tech.md).
 
 ## Review P0 (15-11-2026)
 
 - Có đủ 42 dòng CSV, 42 ID riêng, 42 dòng nhãn silver đối chiếu và 6 ví dụ extraction. Sáu ví dụ đều có `evidence` là chuỗi con của `text`. Dataset card xác nhận train/validation là silver, test là gold, giấy phép CC BY-NC-SA 4.0.
-- **Chặn P1:** `p0_dhc_vs_vaseline_42.csv` thêm cột `brand` dù bản gốc ViLipBTA không có source brand. 40/42 giá trị cột này khớp một brand trong nhãn silver; hai dòng còn lại lạc đề được gán DHC. Vì thế không thể coi cột này là metadata nguồn độc lập hoặc dùng fixture để đo khả năng nhận diện brand của model.
-- Tài liệu P0 chọn OpenCode Go/`deepseek-v4.1-flash` và có `be/.env.example`, nhưng chưa có lần gọi API, kiểm tra structured output, usage, chi phí hoặc độ trễ. Đây là lựa chọn để thử, chưa phải provider đã nghiệm thu.
+- **Chặn P1 (đã xử lý ở P0R):** `p0_dhc_vs_vaseline_42.csv` thêm cột `brand` dù bản gốc ViLipBTA không có source brand. 40/42 giá trị cột này khớp một brand trong nhãn silver; hai dòng còn lại lạc đề được gán DHC. Vì thế không thể coi cột này là metadata nguồn độc lập hoặc dùng fixture để đo khả năng nhận diện brand của model.
+- Tài liệu P0 chọn OpenCode Go/`deepseek-v4.1-flash` và có `be/.env.example`, nhưng chưa có lần gọi API, kiểm tra structured output, usage, chi phí hoặc độ trễ. Đây là lựa chọn để thử, chưa phải provider đã nghiệm thu. **P0R chưa thay đổi trạng thái này vì môi trường không có key.**
 - Tập `test.jsonl` đang nằm cùng workspace. Giữ nó ngoài đường chạy demo, prompt, fixture và mọi quyết định chỉnh prompt; chỉ mở khi benchmark đã đóng prompt ở P5.
+
+## Kết quả P0R (15-11-2026)
+
+- ViLipBTA input đổi thành `be/data/fixtures/p0_vilipbta_42_input.csv` với đúng `review_id,text,context`; không còn cột `brand`. File cũ có cột brand suy từ silver đã bị xóa.
+- Nhãn đối chiếu giữ riêng ở `p0_vilipbta_42_silver_ref.json`. Field gây hiểu nhầm `source_brand` đổi thành `silver_reference_group`; README P0 ghi rõ đây là nhóm suy từ silver, không phải metadata nguồn và không phải gold.
+- CSV synthetic `p0_synthetic_dhc_vs_vaseline_22.csv` có 22 dòng, hai brand DHC/Vaseline, `brand` là metadata nguồn được khai báo khi tạo dữ liệu. Có Price/Benefits, nhắc nhiều brand, mixed sentiment, câu mơ hồ, lạc đề, brand ngoài cặp, context giúp xác định target và ô CSV có dấu phẩy/xuống dòng/ngoặc kép.
+- Expected extraction examples: `p0_vilipbta_expected_extraction.json` (6 ví dụ, silver tham chiếu) và `p0_synthetic_expected_extraction.json` (14 ví dụ, synthetic functional). Cả hai có metadata `not_for_quality_benchmark`; không dùng làm prompt hoặc công bố F1.
+- Checker `be/scripts/check_p0r_fixtures.py` chạy PASS: ID duy nhất, schema/giới hạn, brand, quoting, tách nhãn, evidence nguyên văn trong `text`, mention không lặp. Checker không gọi model và không đọc `test.jsonl`.
+- Smoke call **chưa chạy**: không có `LLM_API_KEY` trong env và không có `be/.env`. Chưa xác minh endpoint, model ID thực trả về, structured JSON, usage, latency hoặc cost.
+- Còn thiếu để nghiệm thu P0R đầy đủ: cấp key backend và chạy một smoke call tối thiểu. Đây là điều kiện trước P2; P1 đã triển khai mà không cần mục này.
 
 ## P0R — sửa fixture và chốt đầu vào
 
@@ -17,6 +27,19 @@ Trạng thái: **P0 cần sửa trước P1**. Đây là kế hoạch và tiêu 
 4. Xác minh endpoint/model/key bằng một smoke call ngắn từ backend hoặc script cục bộ; ghi model ID thực trả về, có/không có structured JSON và usage. Không commit key hoặc log chứa key.
 
 **Xong khi:** PI Agent có fixture CSV đầu vào độc lập, ViLipBTA vẫn giữ vai trò demo/đối chiếu đúng license, và một báo cáo smoke call có giới hạn chi phí. Nếu không có API key, dừng ở ranh giới đó và làm P1 với fake model response trong test.
+
+**Trạng thái 15-11-2026:** mục 1–3 đã xong và được kiểm tra; mục 4 chưa kiểm chứng vì thiếu key. P1 không phụ thuộc mục 4 vì P1 chỉ parse/lưu CSV, không gọi model. Smoke call vẫn là điều kiện mở P2. Xem mục "Kết quả P0R" ở trên và [README_P0.md](be/data/fixtures/README_P0.md).
+
+## Kết quả P1 (15-11-2026)
+
+- Backend nằm trong `be/app/`: FastAPI, Pydantic, SQLAlchemy, Alembic; chỉ bind localhost. Bảng `analyses` và `reviews` có FK, unique `(analysis_id, record_number)`, check constraint brand/trạng thái/counts; chưa có `batches`, `mentions`, `messages`, worker hoặc chat.
+- `POST /api/imports/preview`: một CSV, mapping `text/brand/context/source_id` (nhận alias `review_id`), giới hạn 2 MiB trước khi parse toàn bộ, tối đa 500 data records. Hỗ trợ UTF-8/BOM, quote/comma/newline; báo header trùng, record sai cấu trúc, text rỗng/quá dài, context quá dài, source ID trùng; lỗi dùng `record_number`, không dùng số dòng vật lý. Preview không lưu DB và không gọi model.
+- `POST /api/analyses`: parse lại file/mapping, yêu cầu đúng hai brand khác nhau và mọi source brand phải thuộc hai brand đó. P1 chọn **không nhập riêng phần hợp lệ**: nếu còn record lỗi thì từ chối toàn bộ với 422, không tạo analysis. Lưu filename, SHA-256 file gốc, mapping, source brand, text/context gốc, record number, source ID (nếu có), cảnh báo source ID trùng; internal `review_id` là UUID riêng. Analysis + reviews lưu trong một transaction; `import_status=imported`, `analysis_status=not_started`.
+- `GET /api/analyses/{id}` và `GET /api/analyses/{id}/reviews` có phân trang; mọi query review ràng buộc `analysis_id`.
+- Test: **38 test PASS** (21 parser/validation + 17 API/PostgreSQL), gồm BOM, quote/comma/newline, header trùng, record sai, text rỗng, giới hạn, source ID trùng, cách ly analysis A/B, mapping alias, file quá lớn và restart API.
+- Migration Alembic đã chạy `upgrade head -> downgrade base -> upgrade head` trên PostgreSQL thật (16.2 dựng tạm bằng `pgserver` trong venv, không dùng SQLite); `alembic check` báo không có upgrade operation mới. Restart uvicorn: POST 22 review, dừng process, khởi động lại, GET lại đủ 22 review.
+- Checker P0R vẫn PASS 73/73, fixture không bị hỏng.
+- Chưa làm: frontend, worker/batches/mentions/chat, LLM call và benchmark. P1 chưa có nhập riêng phần hợp lệ; nếu cần phải thêm tham số xác nhận rõ ràng ở task sau.
 
 ## P1 — CSV → review lưu bền
 
@@ -29,9 +52,11 @@ Trạng thái: **P0 cần sửa trước P1**. Đây là kế hoạch và tiêu 
 
 **Kiểm tra:** CSV synthetic của P0R nhập đúng số dòng; BOM, dấu phẩy/ngoặc kép/xuống dòng trong ô, header trùng, text rỗng, quá giới hạn và ID trùng có kết quả đúng. Restart API vẫn đọc lại được dữ liệu. Không cần UI ngoài một request smoke test.
 
+**Trạng thái 15-11-2026:** đã xong phần backend/CSV/DB và test PostgreSQL; xem "Kết quả P1" và [be/README.md](be/README.md). Chưa commit/push.
+
 ## P2 — review → mention có evidence
 
-**Phụ thuộc:** P1 và endpoint model hoạt động. **Feature:** phân tích nền, trạng thái job, nhãn có kiểm tra trước khi lưu.
+**Phụ thuộc:** P1 đã xong; vẫn cần smoke call/endpoint model hoạt động trước khi làm P2. **Feature:** phân tích nền, trạng thái job, nhãn có kiểm tra trước khi lưu.
 
 - Thêm `batches` và `mentions`; worker riêng poll DB. Request tạo analysis trả nhanh; `GET /api/analyses/{id}` có queued/running/completed/failed và số review đã xử lý.
 - Một model client đọc key từ backend env. Prompt nhận text/context và hai brand; trả relevance, target brand, aspect, sentiment, evidence theo contract trong `tech.md`. Dùng response mẫu trong test; không đưa silver/gold vào prompt.
