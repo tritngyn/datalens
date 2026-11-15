@@ -5,3 +5,9 @@ node_modules/
 dist/
 .agents/skills/
 be/data/vilipbta/*.jsonl
+
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
