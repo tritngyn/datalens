@@ -2,6 +2,7 @@
 
 - [Tiến độ và kết quả kiểm tra](tracking.md): trạng thái từng P, quyết định, giới hạn và bước kế tiếp.
 - [Các khái niệm đã học](learning-notes.md): dataset, fixture, nhãn và các công cụ database.
+- [Review P1 và lệnh bàn giao](p1-review-and-p2-handoff.md): task sửa validation hiện tại và lệnh P2 chuẩn bị sẵn.
 - [Plan PI Agent](../PI_AGENT_PLAN.md): phạm vi và tiêu chí bàn giao từng task.
 - [Scope](../features_and_scope.md), [thiết kế](../tech.md), [chạy backend](../be/README.md).
 

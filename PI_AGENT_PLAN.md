@@ -1,5 +1,7 @@
 # PI Agent — review P0 và kế hoạch triển khai
 
+Review tiếp theo: **P1 cần sửa validation NUL** trước P2; PostgreSQL integration hoãn theo yêu cầu người dùng. Xem [tracking](docs/tracking.md) và [lệnh bàn giao sửa P1/P2](docs/p1-review-and-p2-handoff.md). Kết quả PostgreSQL bên dưới là lần chạy PI báo cáo, chưa được Codex tái lập.
+
 Trạng thái: **P1 đã triển khai backend FastAPI + PostgreSQL + Alembic và test trên PostgreSQL thật; đang chờ review.** P0R đã sửa fixture và checker PASS; smoke call LLM vẫn chưa kiểm chứng vì thiếu `LLM_API_KEY`, nhưng P1 không gọi model nên không bị chặn. P2 vẫn cần endpoint model hoạt động. Phạm vi sản phẩm theo [features_and_scope.md](features_and_scope.md), quyết định kỹ thuật theo [tech.md](tech.md).
 
 ## Review P0 (15-11-2026)
