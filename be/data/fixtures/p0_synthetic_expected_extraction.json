@@ -1,0 +1,218 @@
+{
+  "schema_version": 1,
+  "kind": "expected_extraction_examples",
+  "fixture": "p0_synthetic_dhc_vs_vaseline_22.csv",
+  "label_status": "synthetic_functional_expectation_not_gold",
+  "not_for_quality_benchmark": true,
+  "notes": "Synthetic reviews and expectations created only to exercise the pipeline. Do not publish NLP quality metrics from this file. Source brand is declared metadata; target brand in each mention is what the model must predict from text/context.",
+  "examples": [
+    {
+      "review_id": "SYN-001",
+      "relevance": "relevant",
+      "mentions": [
+        {
+          "target_brand": "DHC",
+          "aspect": "Benefits",
+          "sentiment": "Positive",
+          "evidence": "dưỡng ẩm tốt thật"
+        }
+      ]
+    },
+    {
+      "review_id": "SYN-003",
+      "relevance": "relevant",
+      "mentions": [
+        {
+          "target_brand": "DHC",
+          "aspect": "Price",
+          "sentiment": "Negative",
+          "evidence": "đắt thật"
+        },
+        {
+          "target_brand": "DHC",
+          "aspect": "Benefits",
+          "sentiment": "Positive",
+          "evidence": "dưỡng ẩm rất ổn"
+        }
+      ]
+    },
+    {
+      "review_id": "SYN-004",
+      "relevance": "relevant",
+      "mentions": [
+        {
+          "target_brand": "Vaseline",
+          "aspect": "Price",
+          "sentiment": "Positive",
+          "evidence": "rẻ hơn nhiều"
+        },
+        {
+          "target_brand": "Vaseline",
+          "aspect": "Benefits",
+          "sentiment": "Positive",
+          "evidence": "dưỡng ẩm cũng ổn"
+        }
+      ]
+    },
+    {
+      "review_id": "SYN-006",
+      "relevance": "relevant",
+      "mentions": [
+        {
+          "target_brand": "DHC",
+          "aspect": "Benefits",
+          "sentiment": "Positive",
+          "evidence": "DHC dưỡng tốt hơn Vaseline"
+        },
+        {
+          "target_brand": "Vaseline",
+          "aspect": "Scent",
+          "sentiment": "Positive",
+          "evidence": "Vaseline thì thơm hơn"
+        }
+      ]
+    },
+    {
+      "review_id": "SYN-007",
+      "relevance": "needs_review",
+      "mentions": []
+    },
+    {
+      "review_id": "SYN-008",
+      "relevance": "relevant",
+      "mentions": [
+        {
+          "target_brand": "Vaseline",
+          "aspect": "Scent",
+          "sentiment": "Positive",
+          "evidence": "thơm nhẹ"
+        },
+        {
+          "target_brand": "Vaseline",
+          "aspect": "GeneralExperience",
+          "sentiment": "Positive",
+          "evidence": "dùng ổn"
+        }
+      ]
+    },
+    {
+      "review_id": "SYN-012",
+      "relevance": "relevant",
+      "mentions": [
+        {
+          "target_brand": "DHC",
+          "aspect": "Benefits",
+          "sentiment": "Positive",
+          "evidence": "DHC tốt hơn Vaseline về độ dưỡng"
+        }
+      ]
+    },
+    {
+      "review_id": "SYN-013",
+      "relevance": "off_topic",
+      "mentions": []
+    },
+    {
+      "review_id": "SYN-014",
+      "relevance": "relevant",
+      "mentions": [
+        {
+          "target_brand": "DHC",
+          "aspect": "GeneralExperience",
+          "sentiment": "Positive",
+          "evidence": "DHC dùng ổn"
+        },
+        {
+          "target_brand": "Vaseline",
+          "aspect": "Benefits",
+          "sentiment": "Negative",
+          "evidence": "dưỡng kém hơn hẳn"
+        }
+      ]
+    },
+    {
+      "review_id": "SYN-015",
+      "relevance": "relevant",
+      "mentions": [
+        {
+          "target_brand": "Vaseline",
+          "aspect": "Color",
+          "sentiment": "Positive",
+          "evidence": "màu hồng nhạt xinh"
+        },
+        {
+          "target_brand": "Vaseline",
+          "aspect": "Longevity",
+          "sentiment": "Neutral",
+          "evidence": "độ bền thì bình thường"
+        }
+      ]
+    },
+    {
+      "review_id": "SYN-018",
+      "relevance": "relevant",
+      "mentions": [
+        {
+          "target_brand": "other",
+          "aspect": "Benefits",
+          "sentiment": "Positive",
+          "evidence": "Lucas Papaw dưỡng tốt hơn Vaseline nhiều"
+        }
+      ]
+    },
+    {
+      "review_id": "SYN-020",
+      "relevance": "relevant",
+      "mentions": [
+        {
+          "target_brand": "DHC",
+          "aspect": "Price",
+          "sentiment": "Negative",
+          "evidence": "Giá DHC hơi cao"
+        },
+        {
+          "target_brand": "DHC",
+          "aspect": "Benefits",
+          "sentiment": "Positive",
+          "evidence": "dưỡng ẩm tốt"
+        }
+      ]
+    },
+    {
+      "review_id": "SYN-021",
+      "relevance": "relevant",
+      "mentions": [
+        {
+          "target_brand": "Vaseline",
+          "aspect": "Benefits",
+          "sentiment": "Positive",
+          "evidence": "dưỡng ẩm ổn"
+        },
+        {
+          "target_brand": "Vaseline",
+          "aspect": "Scent",
+          "sentiment": "Negative",
+          "evidence": "mùi hơi nồng"
+        }
+      ]
+    },
+    {
+      "review_id": "SYN-022",
+      "relevance": "relevant",
+      "mentions": [
+        {
+          "target_brand": "DHC",
+          "aspect": "Benefits",
+          "sentiment": "Positive",
+          "evidence": "\"cứu tinh\" cho môi khô"
+        },
+        {
+          "target_brand": "DHC",
+          "aspect": "Packaging",
+          "sentiment": "Negative",
+          "evidence": "hộp hơi khó mở"
+        }
+      ]
+    }
+  ]
+}

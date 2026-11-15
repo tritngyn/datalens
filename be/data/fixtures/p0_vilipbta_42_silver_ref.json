@@ -1,7 +1,6 @@
 [
   {
     "review_id": "d40d22dd6eec8a70",
-    "source_brand": "DHC",
     "split": "train",
     "text": "em tính mua dhc mà túi tiền ko cho nên em chọn vaseline mua trong lam thảo cx ổn em sài thấy giảm thâm mà nó thơm cực màu xanh lá á chị thơm lắm",
     "context": "bữa coi thấy ngta chê vaseline thỏi khen dhc bà này thì ngược lại với lại thấy vaseline thỏi cx đc mà giảm thâm có nhưng ko đáng kể màu xanh lá á",
@@ -34,11 +33,11 @@
         "sentiment": "Positive",
         "normalized_brand": "Vaseline"
       }
-    ]
+    ],
+    "silver_reference_group": "DHC"
   },
   {
     "review_id": "aa44a2275cb8dc38",
-    "source_brand": "DHC",
     "split": "train",
     "text": "dhc ko làm hồng môi nhé chứ dưỡng ẩm thôi với giá đó thì tui nghỉ mua vaseline ngon hơn",
     "context": "",
@@ -64,11 +63,11 @@
         "sentiment": "Positive",
         "normalized_brand": "Vaseline"
       }
-    ]
+    ],
+    "silver_reference_group": "DHC"
   },
   {
     "review_id": "eed32ae5961417b5",
-    "source_brand": "DHC",
     "split": "train",
     "text": "Vaselline là cái chất lượng thấp mà nổi pr lố. Xài nhiều loại son dưỡng rồi mà chưa thấy loại nào cấp ẩm kém như vsl, xài vsl môi vẫn bong tróc chảy máu. Xài dhc lucas với mấy loại kia thì đỡ hẳn",
     "context": "",
@@ -101,11 +100,11 @@
         "sentiment": "Positive",
         "normalized_brand": "Lucas Papaw"
       }
-    ]
+    ],
+    "silver_reference_group": "DHC"
   },
   {
     "review_id": "f79bcae929602b2d",
-    "source_brand": "DHC",
     "split": "train",
     "text": "cái này t khuyên b nên thử đã. đồ của Nhật ng hợp ng ko nên ng ta thấy ko ok chưa chắc b ko hợp đâu. mặc dù t cũng hợp vaseline hơn dhc😁",
     "context": "Vaseline hộp thiếc, torriden và DHC cái nào giảm thâm do son ổn hơn ạ",
@@ -124,11 +123,11 @@
         "sentiment": "Negative",
         "normalized_brand": "DHC"
       }
-    ]
+    ],
+    "silver_reference_group": "DHC"
   },
   {
     "review_id": "836856a2b3239821",
-    "source_brand": "Vaseline",
     "split": "train",
     "text": "day tui bị nè vasalin thì k pi thử mua DHC xai thử nào ngờ bị giờ thay clip nay moi pik minh bi chàm môi",
     "context": "DHC thỏi chắc có mình e sài bị chàm môi 🥺",
@@ -147,11 +146,11 @@
         "sentiment": "Negative",
         "normalized_brand": "DHC"
       }
-    ]
+    ],
+    "silver_reference_group": "Vaseline"
   },
   {
     "review_id": "b9c4b780ce341b78",
-    "source_brand": "Vaseline",
     "split": "train",
     "text": "Dhc vs Vaseline tui Sài đâu có bị j đâu bà chắc do ko hợp😅",
     "context": "DHC, mediheal, vaseline thỏi mới (màu xanh). Bao chàm môi 🤯🤯🤯🤯",
@@ -170,11 +169,11 @@
         "sentiment": "Positive",
         "normalized_brand": "Vaseline"
       }
-    ]
+    ],
+    "silver_reference_group": "Vaseline"
   },
   {
     "review_id": "8fc117546cdf6064",
-    "source_brand": "Vaseline",
     "split": "train",
     "text": "thấy vaseline bôi hơi dày á bà, với tui dhc thấy hợp nhất",
     "context": "Sau time dùng DHC Mediheal Laneige đều bị chàm môi, thì hủ vaseline vs t vẫn là chân ái",
@@ -193,11 +192,11 @@
         "sentiment": "Positive",
         "normalized_brand": "DHC"
       }
-    ]
+    ],
+    "silver_reference_group": "Vaseline"
   },
   {
     "review_id": "c1c8b6f12aa5b728",
-    "source_brand": "Vaseline",
     "split": "validation",
     "text": "T son dhc lên môi rồi bôi lớp dày vaseline lên ý mà qua một đêm môi mịn ,đỡ nứt ,hồng một xíu",
     "context": "",
@@ -216,11 +215,11 @@
         "sentiment": "Positive",
         "normalized_brand": "Vaseline"
       }
-    ]
+    ],
+    "silver_reference_group": "Vaseline"
   },
   {
     "review_id": "c65a70fdbf4a95ea",
-    "source_brand": "DHC",
     "split": "train",
     "text": "ê mà tui thấy tui dùng lucas là môi hồng ra hẳn á, hồi trc dhc cũng vậy mà dhc đắt quá nên b cứ thử lucas xem sao",
     "context": "Lucas có giúp giảm thâm mỗi kh ạ",
@@ -246,11 +245,11 @@
         "sentiment": "Negative",
         "normalized_brand": "DHC"
       }
-    ]
+    ],
+    "silver_reference_group": "DHC"
   },
   {
     "review_id": "d00193c211f0f7a4",
-    "source_brand": "DHC",
     "split": "train",
     "text": "Ủa dhc tui thấy ok mà ta😭 dưỡng ẩm mà giảm thâm môi lắm lun á. Tiếc là nó hơi chát vs hssv😭",
     "context": "",
@@ -269,11 +268,11 @@
         "sentiment": "Negative",
         "normalized_brand": "DHC"
       }
-    ]
+    ],
+    "silver_reference_group": "DHC"
   },
   {
     "review_id": "e9ff01b5b0516dea",
-    "source_brand": "DHC",
     "split": "train",
     "text": "khoan dhc tui dùng còn nửa thỏi ch dám dùng tiếp đây nè sợ hết kinh khủng mà nó hơi mắc nữa. Dùng ngon quá tr lun bôi 1 đêm là nó mềm môi mấy ngày lun",
     "context": "",
@@ -306,11 +305,11 @@
         "sentiment": "Positive",
         "normalized_brand": "DHC"
       }
-    ]
+    ],
+    "silver_reference_group": "DHC"
   },
   {
     "review_id": "11e625f131671691",
-    "source_brand": "DHC",
     "split": "train",
     "text": "ê t thấy dhc oke mà mỗi tội giá chát thôi",
     "context": "",
@@ -329,11 +328,11 @@
         "sentiment": "Negative",
         "normalized_brand": "DHC"
       }
-    ]
+    ],
+    "silver_reference_group": "DHC"
   },
   {
     "review_id": "32092bc7665850dc",
-    "source_brand": "DHC",
     "split": "train",
     "text": "DHC thấy bth mà mắc quá",
     "context": "",
@@ -352,11 +351,11 @@
         "sentiment": "Negative",
         "normalized_brand": "DHC"
       }
-    ]
+    ],
+    "silver_reference_group": "DHC"
   },
   {
     "review_id": "e5e6facfca93e2a3",
-    "source_brand": "DHC",
     "split": "train",
     "text": "Tính theo trọng lượng thì con dhc k rẻ chút nào... cùng mức giá mà lucas được hẳn 25g, dhc đc 1.5g",
     "context": "",
@@ -375,11 +374,11 @@
         "sentiment": "Positive",
         "normalized_brand": "Lucas Papaw"
       }
-    ]
+    ],
+    "silver_reference_group": "DHC"
   },
   {
     "review_id": "fb31890dd6274532",
-    "source_brand": "DHC",
     "split": "train",
     "text": "À, ko dưỡng môi hết khô í. E quên từ rùi",
     "context": "E dùng Aquaphor bị châm chích/hay ngứa môi gì đó k nhớ; EA, DHC, langnei thì như vaseline bản đắt tiền (ko ẩm môi mà chỉ giữ ẩm thôi ấy). Hợp với omi, camex, bio 😂",
@@ -405,11 +404,11 @@
         "sentiment": "Negative",
         "normalized_brand": "Laneige"
       }
-    ]
+    ],
+    "silver_reference_group": "DHC"
   },
   {
     "review_id": "c4251295b92eb69e",
-    "source_brand": "DHC",
     "split": "train",
     "text": "Điều hoà thì Dhc k đủ đô thiệc 🥲 bà có thể thử thêm lip oil , vẫn phải dặm thêm sau 2-3t nm đc cái có màu nên cx xinh",
     "context": "với cái m.ỏ luôn khô và muốn tìm 1 loại dưỡng môi đủ wow khi đêm ngủ dậy môi căng mọng. Dưới đây là feedback 100 loại dưỡng môi. Mời đọc ở dưới",
@@ -435,11 +434,11 @@
         "sentiment": "Positive",
         "normalized_brand": "General"
       }
-    ]
+    ],
+    "silver_reference_group": "DHC"
   },
   {
     "review_id": "76e09aaa75e5606d",
-    "source_brand": "DHC",
     "split": "train",
     "text": "Tui dùng ban đêm cảm giác không đủ đô. Tại dùng laneige bôi lớp dày quen rồi dùng DHC bôi mỏng hong chịu đựt",
     "context": "thấy mn rv DHC tốt lắm mà trc mình dùng thấy sao sao ấy🥲",
@@ -451,11 +450,11 @@
         "sentiment": "Negative",
         "normalized_brand": "DHC"
       }
-    ]
+    ],
+    "silver_reference_group": "DHC"
   },
   {
     "review_id": "1e9b4846aad88e0e",
-    "source_brand": "DHC",
     "split": "train",
     "text": "công nhận dhc dưỡng ít tht 😭🥲",
     "context": "",
@@ -467,11 +466,11 @@
         "sentiment": "Negative",
         "normalized_brand": "DHC"
       }
-    ]
+    ],
+    "silver_reference_group": "DHC"
   },
   {
     "review_id": "8cf37d656140d4b3",
-    "source_brand": "DHC",
     "split": "train",
     "text": "Mê thật nma lại kh đủ ẩm với môi😭. Còn lại thì thấy dùng oke",
     "context": "Dhc mà sao chê z ý là t dùng hơn 10 thỏi rồi k dùng được loại khác nữa kiểu bôi xong tẩy da chết ok vãi ấy",
@@ -490,11 +489,11 @@
         "sentiment": "Positive",
         "normalized_brand": "DHC"
       }
-    ]
+    ],
+    "silver_reference_group": "DHC"
   },
   {
     "review_id": "42a28680f4a60258",
-    "source_brand": "DHC",
     "split": "train",
     "text": "dùng của dhc đi mn đảm bảo hồng mình dùng đến thỏi thứ 3 thì môi hết thâm lunnn",
     "context": "",
@@ -506,11 +505,11 @@
         "sentiment": "Positive",
         "normalized_brand": "DHC"
       }
-    ]
+    ],
+    "silver_reference_group": "DHC"
   },
   {
     "review_id": "b8adbcc0ed3052d1",
-    "source_brand": "DHC",
     "split": "train",
     "text": "Mik dùng dhc thấy ok mà, cứ khi nào môi thâm vs tróc là lại dùng vài lần là môi lại hồng hết thâm với dưỡng cũng nhiều, chỉ bị cái là hơi ít hoi",
     "context": "",
@@ -536,11 +535,11 @@
         "sentiment": "Negative",
         "normalized_brand": "DHC"
       }
-    ]
+    ],
+    "silver_reference_group": "DHC"
   },
   {
     "review_id": "5326687e04a932d7",
-    "source_brand": "DHC",
     "split": "train",
     "text": "T cũng xài đây nè, môi mềm hơn hẳn luôn.",
     "context": "Khs tui mê DHC ghê, dùng hoài không chán hehe",
@@ -552,11 +551,11 @@
         "sentiment": "Positive",
         "normalized_brand": "DHC"
       }
-    ]
+    ],
+    "silver_reference_group": "DHC"
   },
   {
     "review_id": "741ff3beb19f6298",
-    "source_brand": "DHC",
     "split": "train",
     "text": "Mình dùng Dior môi vẫn nẻ chảy máu mà DHC êm luôn b. Mình bây h chỉ dùng Dior lúc nào cần son bóng có màu thôi",
     "context": "Dior dùng cho soang thôi chứ thua dhc",
@@ -582,11 +581,11 @@
         "sentiment": "Positive",
         "normalized_brand": "Dior"
       }
-    ]
+    ],
+    "silver_reference_group": "DHC"
   },
   {
     "review_id": "84c98c5dc9f7fabc",
-    "source_brand": "DHC",
     "split": "train",
     "text": "same, 004 tui thấy khô xỉu, dưỡng k bằng con dhc nữa",
     "context": "Em thấy thỏi dior lip glow 01 xài hơi bị khô môi nhma màu 02 thì ko bị 😅. Không hiểu sao",
@@ -605,11 +604,11 @@
         "sentiment": "Positive",
         "normalized_brand": "DHC"
       }
-    ]
+    ],
+    "silver_reference_group": "DHC"
   },
   {
     "review_id": "f57dab9f5241882c",
-    "source_brand": "Vaseline",
     "split": "train",
     "text": "cây vaselin có màu xanh ak .dưỡng ẩm ko tốt đâu nha .đi ra ngoài dưỡng thì đc vừa có màu nhưng dưỡng ẩm ít .tui cũng nghe riview và mua nhưng ko đáng tiền chút nào",
     "context": "",
@@ -635,11 +634,11 @@
         "sentiment": "Negative",
         "normalized_brand": "Vaseline"
       }
-    ]
+    ],
+    "silver_reference_group": "Vaseline"
   },
   {
     "review_id": "57e18008a017553f",
-    "source_brand": "Vaseline",
     "split": "train",
     "text": "dùng vsl chăm chỉ môi mềm lắm mng ơi, lại ko tốn kém",
     "context": "",
@@ -658,11 +657,11 @@
         "sentiment": "Positive",
         "normalized_brand": "Vaseline"
       }
-    ]
+    ],
+    "silver_reference_group": "Vaseline"
   },
   {
     "review_id": "83ff91e594111433",
-    "source_brand": "Vaseline",
     "split": "train",
     "text": "vaseline mua 25k mà sài chất lượng lắm luôn",
     "context": "",
@@ -681,11 +680,11 @@
         "sentiment": "Positive",
         "normalized_brand": "Vaseline"
       }
-    ]
+    ],
+    "silver_reference_group": "Vaseline"
   },
   {
     "review_id": "aa48b47ac735a92b",
-    "source_brand": "Vaseline",
     "split": "train",
     "text": "Vaseline mấy loại thỏi với hộp thiếc thì t xài hơi xu nhưng t xin trung thành với loại hũ cơ bản, vừa rẻ vừa ngon lại còn đa dzi năng vô cùng.",
     "context": "T dùng 11 loại trên hình rồi cảm nhận cũng hơi giống",
@@ -718,11 +717,11 @@
         "sentiment": "Positive",
         "normalized_brand": "Vaseline"
       }
-    ]
+    ],
+    "silver_reference_group": "Vaseline"
   },
   {
     "review_id": "b2f32b166bf8ac5c",
-    "source_brand": "Vaseline",
     "split": "train",
     "text": "t thấy vaseline hộp thiếc tốt lắm lun,rẻ mà tốt",
     "context": "",
@@ -741,11 +740,11 @@
         "sentiment": "Positive",
         "normalized_brand": "Vaseline"
       }
-    ]
+    ],
+    "silver_reference_group": "Vaseline"
   },
   {
     "review_id": "ca92d4197c7378f2",
-    "source_brand": "Vaseline",
     "split": "train",
     "text": "rẻ lắmm",
     "context": "son dưỡng Vaseline Nauy hộp thiết màu vàng cực mướt 🥰",
@@ -757,11 +756,11 @@
         "sentiment": "Positive",
         "normalized_brand": "Vaseline"
       }
-    ]
+    ],
+    "silver_reference_group": "Vaseline"
   },
   {
     "review_id": "7ced3cff8857e8a5",
-    "source_brand": "Vaseline",
     "split": "train",
     "text": "nó k có tác dụng qq j hết 🤡",
     "context": "vừa bôi vaseline vừa xem và đã tự ái",
@@ -773,11 +772,11 @@
         "sentiment": "Negative",
         "normalized_brand": "Vaseline"
       }
-    ]
+    ],
+    "silver_reference_group": "Vaseline"
   },
   {
     "review_id": "bd1bdae1a03663ae",
-    "source_brand": "Vaseline",
     "split": "train",
     "text": "bữa coi thấy ngta chê vaseline thỏi khen dhc bà này thì ngược lại với lại thấy vaseline thỏi cx đc mà giảm thâm có nhưng ko đáng kể màu xanh lá á",
     "context": "",
@@ -796,11 +795,11 @@
         "sentiment": "Negative",
         "normalized_brand": "Vaseline"
       }
-    ]
+    ],
+    "silver_reference_group": "Vaseline"
   },
   {
     "review_id": "e194e54f04c284a1",
-    "source_brand": "Vaseline",
     "split": "train",
     "text": "e th bioderma dùng cx ok cho môi nhạy cảm hở tí là nóng với mẩn lm dịu ok dưỡng ẩm thì cũng bình thường nhm hơn con vaseline nắp thiếc ☺️",
     "context": "",
@@ -833,11 +832,11 @@
         "sentiment": "Negative",
         "normalized_brand": "Vaseline"
       }
-    ]
+    ],
+    "silver_reference_group": "Vaseline"
   },
   {
     "review_id": "6d9637e3e0be5554",
-    "source_brand": "Vaseline",
     "split": "train",
     "text": "t cảm giác vaseline nó chỉ toàn là dầu khoáng còn thành phần dưỡng môi có chút xíu , bôi lên môi như tạo một lớp dầu chứ nó k mềm môi🗿",
     "context": "",
@@ -863,11 +862,11 @@
         "sentiment": "Negative",
         "normalized_brand": "Vaseline"
       }
-    ]
+    ],
+    "silver_reference_group": "Vaseline"
   },
   {
     "review_id": "1a5b5af8ba79f25c",
-    "source_brand": "Vaseline",
     "split": "train",
     "text": "Có hàg fake k nhỉ mình dùng hộp màu xanh khô hơn cả k dùng",
     "context": "Vaseline hộp thiếc thì sao ạ?",
@@ -879,11 +878,11 @@
         "sentiment": "Negative",
         "normalized_brand": "Vaseline"
       }
-    ]
+    ],
+    "silver_reference_group": "Vaseline"
   },
   {
     "review_id": "25a9f51125bf65ed",
-    "source_brand": "Vaseline",
     "split": "train",
     "text": "e sdung mấy loại dưỡng đều bị chàm dù tgian đầu dùng vẫn êm, cuối cùng phải quay về vs vaseline",
     "context": "Rồi có bác nào chàm môi mà tìm thấy loại dưỡng cmôi chân ái chưa ạ, cíu tui😐",
@@ -902,11 +901,11 @@
         "sentiment": "Positive",
         "normalized_brand": "Vaseline"
       }
-    ]
+    ],
+    "silver_reference_group": "Vaseline"
   },
   {
     "review_id": "089d55c1ff2c2bcb",
-    "source_brand": "Vaseline",
     "split": "train",
     "text": "Tui sài tới cây thứ 3 ròi chưa thấy thâm môi bà ơi, ban ngày tui sài romand còn tối tui vẫn sd vaseline á bà",
     "context": "Son dưỡng romand sài đã lắm mấy bà ơiii, cái màu 06 nó dịuuu mà dưỡng ẩm siêu ổn luôn ấy",
@@ -925,11 +924,11 @@
         "sentiment": "Positive",
         "normalized_brand": "Vaseline"
       }
-    ]
+    ],
+    "silver_reference_group": "Vaseline"
   },
   {
     "review_id": "b8aac5d4ca4b247e",
-    "source_brand": "Vaseline",
     "split": "train",
     "text": "son dưỡng ko đc đánh 24h đâu mom🥺. Tối bà mua vaseline jelly về ủ dày môi cho tui, nó đỡ thâm nha",
     "context": "Tui bôi whoo đó nó lên bớt thâm môi luôn. Thấy son dưỡng nên tui bôi 24/24. Lên bớt thâm lun mãi chưa hết đây.huhu. Mn đừng đánh 24/24 như tui nhen.",
@@ -948,11 +947,11 @@
         "sentiment": "Positive",
         "normalized_brand": "Vaseline"
       }
-    ]
+    ],
+    "silver_reference_group": "Vaseline"
   },
   {
     "review_id": "a6ebfc83882aadb8",
-    "source_brand": "Vaseline",
     "split": "train",
     "text": "Em đang dùng Vaseline màu hồng nè giảm thâm môi làm cho môi hồng",
     "context": "",
@@ -964,11 +963,11 @@
         "sentiment": "Positive",
         "normalized_brand": "Vaseline"
       }
-    ]
+    ],
+    "silver_reference_group": "Vaseline"
   },
   {
     "review_id": "71abacfc0e428bb9",
-    "source_brand": "Vaseline",
     "split": "train",
     "text": "Vsl giờ có hẳn dòng son dưỡng có màu rồi, nên ai muốn ko màu thì suggest dùng cái hũ giữ ẩm tốt nhất luôn, còn muốn có màu 1 xíu thì nên thử dòng mới",
     "context": "",
@@ -987,11 +986,11 @@
         "sentiment": "Neutral",
         "normalized_brand": "Vaseline"
       }
-    ]
+    ],
+    "silver_reference_group": "Vaseline"
   },
   {
     "review_id": "8ad56a861616dd4a",
-    "source_brand": "DHC",
     "split": "train",
     "text": "c thử son vocungton giúp em với ạ 🥰",
     "context": "",
@@ -1003,11 +1002,11 @@
         "sentiment": "None",
         "normalized_brand": "None"
       }
-    ]
+    ],
+    "silver_reference_group": "DHC"
   },
   {
     "review_id": "55e0c158b4a6206c",
-    "source_brand": "DHC",
     "split": "train",
     "text": "Lúc m đẻ mổ đau tthấu trời dc 1 mẹ rv aquaphor ok lăm nha. Đỡ đau hẳn luôn",
     "context": "",
@@ -1019,6 +1018,7 @@
         "sentiment": "None",
         "normalized_brand": "None"
       }
-    ]
+    ],
+    "silver_reference_group": "DHC"
   }
 ]
