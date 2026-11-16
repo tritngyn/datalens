@@ -3,12 +3,14 @@
 Loại sản phẩm: software — workspace phân tích review tiếng Việt của hai thương hiệu son dưỡng.
 Hướng thiết kế đã duyệt: Thematic làm tham chiếu bố cục, Revuze cho so sánh brand, Chattermill cho insight → feedback. Giao diện sáng, trung tính, ưu tiên kiểm tra bằng chứng.
 
-Trạng thái: **người dùng đã duyệt hướng tham khảo và yêu cầu viết plan cho PI làm**. Ngày: 15/11/2026. Người dùng tự giao plan này cho PI; Codex không chạy implement hoặc điều phối agent.
+Trạng thái cập nhật **16/11/2026**: UI-A đã triển khai U01–U03, có báo cáo chạy API thật và ảnh; Codex đã kiểm tra source và chạy lại checks frontend, chưa tái lập DB/browser hiện tại. Người dùng đã yêu cầu chuyển sang **UI-B**; gói này được duyệt nhưng **chờ backend P2–P3**. UI-P là prototype riêng, còn hai lỗi trong [review](docs/ui-p-review.md), không được tính là UI-B hoàn tất. Người dùng tự giao việc cho PI; Codex không tự điều phối agent.
 Codex chỉ viết plan; người dùng giao việc và điều phối PI. Tài liệu này không thay thế các task backend P2–P3 hoặc mở rộng phạm vi MVP.
 
 Người dùng đã xác nhận: đây là kickoff UI/UX từ đầu, chưa có UI/UX sản phẩm để cải tiến hoặc redesign. Tên trong tài liệu sản phẩm hiện là Review Intelligence; tên hiển thị cuối cùng cần được chốt trong brief, không tự thiết kế logo/rebrand.
 
 ## 0. Chỉ dẫn bắt đầu cho PI
+
+**Mốc hiện tại:** không làm lại UI-A. Đọc [bàn giao UI-B](docs/ui-b-handoff.md) để kiểm tra dependency và tích hợp U04–U05 khi P2–P3 sẵn sàng. Hiện source backend chỉ có API P1; chưa được thay bằng dữ liệu mẫu trong luồng thật. Các hướng dẫn UI-A bên dưới là phạm vi gốc để đối chiếu nghiệm thu.
 
 Đọc toàn bộ plan, `features_and_scope.md`, `tech.md`, `PI_AGENT_PLAN.md` và `be/README.md` trước khi code. Kiểm tra lại source/API hiện tại vì backend có thể đã tiến triển sau khi viết plan. Giữ thay đổi sẵn trong working tree.
 
@@ -276,6 +278,15 @@ Không có API list analyses: đợt đầu hỗ trợ URL analysis đang mở, 
 
 ## 7. Gói công việc giao PI
 
+### Tiến độ kiểm tra ngày 16/11/2026
+
+| Gói | Tình trạng hiện tại | Bước kế tiếp |
+| --- | --- | --- |
+| UI-A | Đã code U01–U03 và được PI báo cáo chạy với API P1 thật; frontend đã commit `b0d8794`, Codex chạy lint/build/test đạt | Giữ luồng thật; chạy lại end-to-end khi DB cloud sẵn sàng. Không gọi đó là mock hoặc làm lại UI-A. |
+| UI-P | Có prototype `?preview=design`, 16 test frontend đạt; chưa nghiệm thu vì 2 finding về citation hỏi tiếp và empty counters | Sửa theo `docs/ui-p-review.md`; lỗi thuộc prototype, không chặn việc chuẩn bị backend P2. |
+| UI-B | Người dùng đã cho chuyển sang U04–U05; chưa thể tích hợp thật do thiếu P2–P3 | Làm P2 rồi P3, từng task riêng; sau đó tích hợp theo `docs/ui-b-handoff.md`. |
+| UI-C | Chưa triển khai, phụ thuộc P5 | Chưa giao trong lượt UI-B. |
+
 Các gói dưới đây là nội dung bàn giao; Codex không tự gửi hoặc điều phối PI. Bắt đầu bằng UI-A khi người dùng giao plan. UI-B/UI-C phải đủ dependency backend; không mở rộng backend trong task UI để chạy cho đủ.
 
 | Gói | Nội dung | Phụ thuộc | Điều kiện hoàn thành |
@@ -349,6 +360,6 @@ Trước khi code gói chưa được duyệt: PI cần có phạm vi feature/fi
 - Gói đầu UI-A gồm U01–U03, nối API P1; chưa có AI/chat hoạt động.
 - UI-B chờ P2–P3; UI-C theo P5. Chỉ nối chức năng sau khi có contract thật và người dùng giao gói tương ứng.
 
-Chưa chạy browser, build, test hoặc API live trong công việc viết plan. Khả năng backend nêu trên được xác định từ source/schema; trạng thái test P1 trong tài liệu cũ chưa được kiểm chứng lại ở lượt này.
+Ở lần viết plan ban đầu chưa chạy browser/build/test/API live. Cập nhật 16/11/2026: đã có báo cáo UI-A chạy API thật từ PI; Codex chạy lại lint/build và 16 tests frontend đạt khi review UI-P. Chưa tái lập DB/API end-to-end ở môi trường hiện tại, và Chrome không khởi động được ở lượt chụp lại UI-P. Tình trạng mới nhất nằm ở mục 7 và `docs/tracking.md`.
 
 Rủi ro chính: P1 chưa có idempotency, API khởi chạy AI trên analysis đã import và contract chart/chat thực tế; không mở rộng UI vượt các ranh giới này khi chưa duyệt.

@@ -1,6 +1,6 @@
 # Tracking — Review Intelligence
 
-Cập nhật: 15-11-2026. Nguồn: code trong workspace, báo cáo PI Agent do người dùng chuyển và các kiểm tra Codex chạy lại. Lịch sử Git lưu chi tiết từng lần sửa.
+Cập nhật: 16-11-2026. Nguồn: code trong workspace, báo cáo PI Agent do người dùng chuyển và các kiểm tra Codex chạy lại. Lịch sử Git lưu chi tiết từng lần sửa.
 
 ## Tổng quan
 
@@ -8,10 +8,12 @@ Cập nhật: 15-11-2026. Nguồn: code trong workspace, báo cáo PI Agent do n
 | --- | --- | --- |
 | P0 | Đã review, được P0R thay thế | CSV cũ thêm brand từ nhãn silver; không đủ độc lập để làm input. |
 | P0R | Fixture đã review và checker đạt | Tách input/nhãn, thêm synthetic; smoke call LLM chưa chạy. |
-| P1 | Đã review, cần sửa validation NUL | Parser nhận NUL nhưng psycopg từ chối lưu; integration PostgreSQL hoãn theo người dùng. |
+| P1 | Đã sửa NUL + cấu hình Cloud PostgreSQL; chờ connection string | Parser chặn NUL (`422`/`nul_byte`); config nhận URL cloud; migration/integration chưa chạy vì `be/.env` chưa có URL. |
 | P2 | Chưa giao | Model client, worker và extraction; cần smoke call provider. |
 | P3 | Chưa triển khai | Facts, chart payload và drill-down. |
-| P4 | Chưa triển khai | UI luồng dọc; frontend hiện vẫn là Vite mẫu. |
+| P4 | UI-A xong (U01–U03) | Nhập CSV/preview/lưu/đọc review trong `fe/`; U04–U06 (job, chart, chat) chờ P2–P5. |
+| UI-P | Đã review, cần sửa 2 finding | Citation hỏi tiếp và empty counters; xem `docs/ui-p-review.md`. Prototype không tính là UI-B hoàn tất. |
+| UI-B | Người dùng đã yêu cầu chuyển bước, chờ P2–P3 | UI-A đã code; thiếu API start/progress/query/chart snapshot. Bàn giao tại `docs/ui-b-handoff.md`. |
 | P5 | Để sau luồng dọc | Chat follow-up, demo đầy đủ, benchmark và vận hành mở rộng. |
 
 ## P0R — đã sửa gì và vì sao?
@@ -41,7 +43,17 @@ Quyết định P1:
 - Source ID trùng chỉ cảnh báo; UUID nội bộ riêng và không tự xóa dòng.
 - Giữ text/context gốc và số bản ghi CSV để truy vết; newline trong ô không tạo review mới.
 - `imported` và `analysis_status=not_started` khác nhau: dữ liệu đã lưu chưa có nghĩa đã phân tích AI.
-- Chưa có worker, mentions, chat, UI sản phẩm hoặc auth/cloud.
+- Chưa có worker, mentions hoặc chat; UI nhập/đọc CSV có ở `fe/` (UI-A). DB dùng Cloud PostgreSQL qua `DATABASE_URL`/`TEST_DATABASE_URL`, không cài PostgreSQL local.
+
+### Sửa validation NUL và cấu hình Cloud PostgreSQL (16-11-2026)
+
+- `parse_csv_bytes` chặn NUL sau khi decode (`nul_byte`, details `nul_count`); preview và import đều trả `422` trước khi mở transaction, không xóa ký tự. File sai encoding vẫn báo `invalid_encoding` vì kiểm tra NUL đặt sau decode.
+- `app/config.py`: `normalize_database_url` đổi `postgres://`/`postgresql://` thành `postgresql+psycopg://` và giữ query (`sslmode=require`); `Settings` dùng validator này.
+- `app/db.py`: `create_engine(..., pool_pre_ping=True, pool_recycle=300)` để idle timeout/SSL reset của cloud không làm request kế tiếp lỗi.
+- `be/tests/test_api.py`: tách `ApiPreviewTests` (không cần DB) khỏi `ApiPostgresTests`; thêm guard so sánh host/port/database và raise `RuntimeError` nếu `TEST_DATABASE_URL` trùng `DATABASE_URL`; thêm test NUL cho preview và cho import.
+- `be/.env.example`, `be/README.md`: hướng dẫn Azure Flexible Server/managed Postgres, hai database `datalens_mvp`/`datalens_test`, `sslmode=require`; bỏ hướng dẫn PostgreSQL local.
+
+Chưa kiểm chứng: migration và API trên cloud thật, vì chưa có connection string trong `be/.env`.
 
 ### Bằng chứng kiểm tra
 
@@ -62,18 +74,49 @@ python be/scripts/check_p0r_fixtures.py
 - Test backend phải chạy từ `be/`; chạy discovery từ root không có module `app` trên import path.
 - Có xem API/config và cấu trúc code; chưa thực hiện code review toàn diện hoặc kiểm thử tải/upload HTTP lớn.
 
+**Codex chạy lại ngày 16-11-2026** (sau khi sửa NUL và cấu hình cloud), không kết nối DB nào:
+
+- Checker P0R: PASS.
+- Test backend không cần DB: 48 test, **37 PASS + 11 SKIP** (`ApiPostgresTests` cần `TEST_DATABASE_URL`). Chi tiết: 23 parser/validation, 4 config, 8 preview API, 2 guard chống trùng DB.
+- Frontend không sửa logic UI-A: `npm run lint`, `npm run build`, `npm run test` (6/6) PASS.
+- Không chạy `alembic upgrade head` và integration test: `be/.env` chưa có, không có connection string cloud. Không dựng PostgreSQL local/pgserver hay SQLite.
+- PostgreSQL tạm dùng cho QA UI-A trước đó đã được dừng.
+
+## UI-P — prototype workspace (16-11-2026)
+
+Gói UI-P theo [handoff](ui-prototype-handoff.md): prototype để duyệt bố cục, không phải nghiệm thu
+UI-B/UI-C hay P4 end-to-end. URL: `http://localhost:5173/?preview=design` (chỉ cần Vite, không cần
+API/DB/key). Báo cáo đầy đủ ở [fe/UI_PROTOTYPE_DELIVERY.md](../fe/UI_PROTOTYPE_DELIVERY.md).
+
+- Chế độ preview tách khỏi UI-A: không gọi `getAnalysis`, không upload, không ghi DB/localStorage;
+  URL có cả `analysis` và `preview` thì preview thắng và ghi rõ đã bỏ qua `analysis`. Thoát preview
+  về màn nhập, không xóa analysis trên server.
+- Dữ liệu: 22 review nguyên văn từ fixture synthetic + `SYN-023` synthetic chỉ để duyệt text dài;
+  mention khai báo riêng cho prototype (14 review đầu khớp expected extraction). Không dùng ViLipBTA
+  test gold. Count/rate/coverage/chart/drill-down/citation đều suy từ `prototype/logic.ts`.
+- Có grouped bar Giá/Hiệu quả dưỡng với tử số/mẫu số, bảng số liệu, filter aspect/sentiment,
+  drill-down bằng click/keyboard, tóm tắt mẫu + citation mở đúng review, evidence tô sáng an toàn.
+- 5 trạng thái thiết kế: Đang xử lý, Hoàn tất, Một phần, Lỗi, Không có kết quả. Trạng thái một
+  phần loại 4 review chưa xử lý nên mẫu số Vaseline/Giá và Vaseline/Hiệu quả dưỡng bằng 0 và
+  hiện “Không đủ dữ liệu”. Không có timer hay tiến trình giả.
+- Chạy 16-11-2026: `npm run lint`, `npm run build`, `npm run test` (16/16) PASS. Browser QA bằng
+  Chrome headless (playwright-core) ở 1440/1024/768/390/320: không tràn ngang, không lỗi console,
+  preview không phát sinh request `/api`, bàn phím (skip link, Enter trên cột) và citation focus đúng.
+  15 ảnh trong `fe/shots/prototype/`.
+- Chưa có: AI/chart/chat thật (P2–P5), screen reader thật, Firefox/Safari, automated a11y audit.
+
 ## Việc tiếp theo
 
-1. Giao riêng task sửa validation P1 theo [bàn giao sau review](p1-review-and-p2-handoff.md). Không triển khai worker trong task sửa này.
-2. Smoke call nhỏ xác minh provider/model trước khi nghiệm thu P2. Không đưa key vào docs/Git.
-3. Giao riêng P2 sau khi sửa lỗi; không chạy tiếp P3/P4 tự động. Lệnh P2 đã chuẩn bị trong file bàn giao.
-4. **Theo yêu cầu người dùng ngày 15-11-2026, tạm bỏ qua PostgreSQL**; người dùng sẽ cài sau. Không dựng pgserver/Docker hoặc thay SQLite để giả lập việc nghiệm thu integration. Các kiểm tra cần DB giữ trạng thái chưa tái lập cho đến khi có DB.
+1. Người dùng điền `DATABASE_URL`/`TEST_DATABASE_URL` (Cloud PostgreSQL, hai database riêng) vào `be/.env`, chạy `alembic upgrade head` cho cả hai DB rồi chạy lại integration test. Không dựng PostgreSQL local/pgserver/SQLite.
+2. Smoke call nhỏ xác minh provider/model trước khi nghiệm thu P2; cần `LLM_API_KEY`. Không đưa key vào docs/Git.
+3. Giao riêng P2 sau khi có kết quả integration trên cloud; không chạy tiếp P3/P4 tự động. Lệnh P2 đã chuẩn bị trong file bàn giao.
+4. UI-A (U01–U03) đã xong phần triển khai trong `fe/`, có báo cáo chạy API thật từ PI. Người dùng đã yêu cầu chuyển sang UI-B: triển khai P2 rồi P3 theo từng task trước khi nối U04–U05; xem [bàn giao UI-B](ui-b-handoff.md). UI-P còn hai finding cần sửa. UI-C/U06 vẫn chờ P5. Chưa tái lập end-to-end DB hiện tại.
+5. Người dùng duyệt thiết kế UI-P trước khi làm task tích hợp chart/chat thật; UI-P không làm thay đổi trạng thái nghiệm thu P2–P5.
 
 ## Review P1 tiếp theo (15-11-2026)
 
 - Đã đọc parser, API, schema/model và migration. Không phát hiện thêm lỗi chặn luồng qua phần đã đọc ngoài lỗi dưới đây; chưa coi đây là nghiệm thu runtime đầy đủ.
-- **Lỗi cần sửa:** `parse_csv_bytes` nhận `b'brand,text\nDHC,good\x00review\n'` và trả `valid_records=1`, `errors=[]`. Gọi `psycopg.adapt.Transformer().as_literal()` với text này trả `DataError: PostgreSQL text fields cannot contain NUL (0x00) bytes`. Đây là kiểm tra adapter cục bộ, không kết nối hoặc khởi động DB. API import hiện sẽ đi đến nhánh lỗi lưu 500 thay vì từ chối dữ liệu 422.
-- Cần reject NUL trong nội dung CSV trước khi lưu; không âm thầm xóa ký tự. Thêm test parser và API preview không cần DB. Đường import không ghi DB khi đầu vào sai vẫn cần integration sau khi người dùng cài PostgreSQL.
+- **Đã sửa (16-11-2026):** parser từ chối CSV có NUL bằng `CsvInputError("nul_byte")`; API preview và import trả `422` trước khi chạm DB, không xóa ký tự. Có test parser (NUL trong text, header, brand) và test API preview/import không cần DB. Integration import trên cloud vẫn chờ connection string; theo người dùng, không dựng PostgreSQL local hay SQLite để thay thế.
 - Không có `LLM_API_KEY` trong environment hoặc `be/.env` ở thời điểm kiểm tra; smoke call chưa chạy, chưa đo chất lượng/usage/latency/cost của model.
 
-`UI_UX_PLAN.md` và `package-lock.json` ở root đang là file ngoài phạm vi bàn giao P1; chưa được review/commit trong lượt tracking này. Các file dữ liệu gốc, môi trường ảo và Taste Skill cài cục bộ tiếp tục được ignore.
+`package-lock.json` rỗng ở root đã được xóa ngày 16-11-2026 (`fe/package-lock.json` vẫn giữ). `UI_UX_PLAN.md` vẫn là file kế hoạch UI, không phải code P1. Các file dữ liệu gốc, môi trường ảo và Taste Skill cài cục bộ tiếp tục được ignore.
