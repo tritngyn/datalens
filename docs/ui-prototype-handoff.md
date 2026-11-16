@@ -68,6 +68,9 @@ không làm tiếp backend, không tự commit/push. Codex sẽ review và commi
 
 ## Tracking gói này
 
-- 16-11-2026: đã có phạm vi và lệnh bàn giao, chờ người dùng gửi PI; chưa implement/chạy prototype.
+- Review Codex: xem [ui-p-review.md](ui-p-review.md). Lint/build/16 tests đạt; cần sửa căn cứ hỏi tiếp và counters của empty state trước nghiệm thu. Chrome chưa khởi động được để tái lập browser QA.
+
+- 16-11-2026: đã có phạm vi và lệnh bàn giao; **PI đã triển khai UI-P** — xem
+  [fe/UI_PROTOTYPE_DELIVERY.md](../fe/UI_PROTOTYPE_DELIVERY.md) để duyệt URL, trạng thái và ảnh.
 - UI-A có code trong workspace và báo cáo riêng; UI-P không thay thế việc review/commit các thay đổi đó.
 - P2/P3 cần cho tích hợp AI/chart thật; P5 cần cho chat thật. Hoàn tất UI-P không làm thay đổi trạng thái nghiệm thu các P này.
